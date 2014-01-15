@@ -18,7 +18,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="<dev-haskell/aeson-0.7:=[profile?]
+RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/attoparsec:=[profile?]
 	<dev-haskell/cabal-1.19:=[profile?]
 	<dev-haskell/cpphs-1.19:=[profile?]
@@ -52,6 +52,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	cabal_chdeps \
+		'aeson                              < 0.7' 'aeson' \
 		'attoparsec                         < 0.11' 'attoparsec' \
 		'text                               < 1.1' 'text'
 }
