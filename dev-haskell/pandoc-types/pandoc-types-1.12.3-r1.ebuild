@@ -18,10 +18,15 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-haskell/aeson-0.6.2:=[profile?] <dev-haskell/aeson-0.7:=[profile?]
+RDEPEND=">=dev-haskell/aeson-0.6.2:=[profile?]
 	>=dev-haskell/syb-0.1:=[profile?] <dev-haskell/syb-0.5:=[profile?]
 	>=dev-lang/ghc-6.12.1:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8.0.2
 "
+
+src_prepare() {
+	cabal_chdeps \
+		'aeson >= 0.6.2 && < 0.7' 'aeson >= 0.6.2'
+}
